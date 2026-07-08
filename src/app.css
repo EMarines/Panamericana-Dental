@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #006565;
+  --color-primary-dark: #004545;
+  --color-primary-light: #008080;
+  --color-primary-teal: #00b3b3;
+  --color-accent: #76d6d5;
+  --color-surface: #f8f9ff;
+  --color-surface-low: #eff4ff;
+  --color-on-surface: #0b1c30;
+  --color-on-surface-muted: #3e4949;
+  --color-white: #ffffff;
+  --color-gold: #f59e0b;
+
+  --font-display: "Montserrat", sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+
+  --radius-card: 1.5rem;
+  --radius-btn: 9999px;
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+.animate-fade-up   { animation: fadeInUp 0.7s ease forwards; }
+.animate-fade-in   { animation: fadeIn   0.6s ease forwards; }
+.animate-float     { animation: floatY  3s ease-in-out infinite; }
+
+/* Delay helpers */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+
+/* Card hover */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 101, 101, 0.12);
+}
+
+/* Gradient teal */
+.bg-teal-gradient {
+  background: linear-gradient(135deg, #006565 0%, #008080 60%, #00b3b3 100%);
+}
+
+/* Sección stripe */
+.section-alt {
+  background-color: var(--color-surface-low);
+}
