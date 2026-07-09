@@ -1,6 +1,7 @@
 <script>
   import '../app.css';
   import { page } from '$app/stores';
+  import logo from '$lib/assets/logo.png';
 
   let { children } = $props();
   let menuOpen = $state(false);
@@ -29,13 +30,9 @@
 >
   <nav class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 flex items-center justify-between h-24">
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-3 group rounded-full px-3 py-2 transition-colors hover:bg-white/70">
-      <div class="w-11 h-11 rounded-xl flex items-center justify-center shadow-md" style="background: linear-gradient(135deg,#006565,#008080)">
-        <svg viewBox="0 0 40 40" class="w-6 h-6 fill-white" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 4C12 4 7 10 7 16c0 4 2 7 4 9l2 9c.5 2 2 2.5 3 2.5h.5c1 0 2-.5 2.5-2.5L20 30l1 4c.5 2 1.5 2.5 2.5 2.5H24c1 0 2.5-.5 3-2.5l2-9c2-2 4-5 4-9 0-6-5-12-13-12z"/>
-        </svg>
-      </div>
-      <div class="leading-tight">
+    <a href="/" class="flex items-center gap-2 sm:gap-3 group transition-colors hover:opacity-90">
+      <img src={logo} alt="Logo Dental Panamericana" class="h-16 w-auto sm:h-20 md:h-24 object-contain" />
+      <div class="leading-tight hidden sm:block">
         <p class="font-display font-800 text-sm tracking-tight" style="color:#006565">DENTAL</p>
         <p class="font-display font-600 text-xs tracking-widest uppercase" style="color:#3e4949">PANAMERICANA</p>
       </div>
@@ -121,9 +118,7 @@
     <!-- Brand -->
     <div>
       <div class="flex items-center gap-3 mb-4">
-        <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#006565,#008080)">
-          <svg viewBox="0 0 40 40" class="w-5 h-5 fill-white"><path d="M20 4C12 4 7 10 7 16c0 4 2 7 4 9l2 9c.5 2 2 2.5 3 2.5h.5c1 0 2-.5 2.5-2.5L20 30l1 4c.5 2 1.5 2.5 2.5 2.5H24c1 0 2.5-.5 3-2.5l2-9c2-2 4-5 4-9 0-6-5-12-13-12z"/></svg>
-        </div>
+        <img src={logo} alt="Logo Dental Panamericana" class="h-10 w-auto object-contain" />
         <div>
           <p class="font-display font-800 text-sm" style="color:#76d6d5">DENTAL PANAMERICANA</p>
         </div>
@@ -150,7 +145,7 @@
         <p>Ave. Francisco Villa #5700</p>
         <p>Col. Panamericana, C.P. 31203</p>
         <p>Chihuahua, Chih. México</p>
-        <p class="pt-1"><a href="tel:+526141234567" class="hover:opacity-100">(614) 123-4567</a></p>
+        <p class="pt-1"><a href="tel:+526144265685" class="hover:opacity-100">(614) 426-5685</a></p>
         <p><a href="mailto:info@armviewdentistry.mx" class="hover:opacity-100">info@armviewdentistry.mx</a></p>
       </address>
     </div>

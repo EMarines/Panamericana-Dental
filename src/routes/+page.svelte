@@ -1,5 +1,7 @@
 <script>
   import { onMount } from 'svelte';
+  import heroImage from '$lib/assets/chair.jpg';
+  import edificioImage from '$lib/assets/edificio.png';
 
   const servicios = [
     {
@@ -85,7 +87,7 @@
 ══════════════════════════════════════ -->
 <section
   class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
-  style="background: linear-gradient(135deg, #002828 0%, #004545 50%, #006565 100%)"
+  style="background-image: linear-gradient(135deg, rgba(0, 40, 40, 0.5) 0%, rgba(0, 69, 69, 0.5) 50%, rgba(0, 101, 101, 0.5) 100%), url({heroImage}); background-size: cover; background-position: center;"
 >
   <!-- Decorative circles -->
   <div class="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10 translate-x-1/2 -translate-y-1/4"
@@ -186,25 +188,8 @@
   <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
     <!-- Imagen genérica de clínica moderna -->
     <div class="relative">
-      <div class="rounded-3xl overflow-hidden shadow-2xl aspect-4/3"
-           style="background: linear-gradient(135deg,#e0f7f7,#b3e8e8)">
-        <div class="w-full h-full flex flex-col items-center justify-center gap-4 p-8">
-          <svg class="w-24 h-24 opacity-30" fill="none" stroke="#006565" stroke-width="1" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m2.25-18v18m13.5-18v18m2.25-18v18M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/>
-          </svg>
-          <p class="font-display font-700 text-center" style="color:#006565;opacity:0.5">Clínica Dental Panamericana<br/>Chihuahua</p>
-          <p class="text-xs text-center opacity-40" style="color:#006565">(Imagen ilustrativa — se actualizará con fotografía real)</p>
-        </div>
-      </div>
-      <!-- Floating card -->
-      <div class="absolute -bottom-5 -right-5 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-float">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(0,101,101,0.1)">
-          <svg class="w-5 h-5" fill="none" stroke="#006565" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <div>
-          <p class="font-700 text-xs" style="color:#0b1c30">Tecnología Digital</p>
-          <p class="text-xs opacity-60" style="color:#3e4949">Tratamientos precisos</p>
-        </div>
+      <div class="rounded-3xl overflow-hidden shadow-2xl aspect-4/3 bg-cover bg-center"
+           style="background-image: linear-gradient(135deg, rgba(224, 247, 247, 0.25), rgba(179, 232, 232, 0.2)), url({edificioImage});">
       </div>
     </div>
 

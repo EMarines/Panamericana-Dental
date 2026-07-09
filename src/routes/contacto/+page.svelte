@@ -101,8 +101,8 @@
       </div>
       <div>
         <p class="font-display font-700 text-base mb-1" style="color:#0b1c30">Teléfono y Correo</p>
-        <a href="tel:+526141234567" class="block text-sm mb-1 hover:opacity-80 transition-opacity" style="color:#006565">
-          (614) 123-4567
+        <a href="tel:+526144265685" class="block text-sm mb-1 hover:opacity-80 transition-opacity" style="color:#006565">
+          (614) 426-5685
         </a>
         <a href="mailto:info@armviewdentistry.mx" class="block text-sm" style="color:#3e4949">
           info@armviewdentistry.mx
@@ -257,7 +257,7 @@
           </button>
 
           <p class="text-xs text-center opacity-60" style="color:#3e4949">
-            * También puedes llamarnos directamente al <a href="tel:+526141234567" class="font-700" style="color:#006565">(614) 123-4567</a>
+            * También puedes llamarnos directamente al <a href="tel:+526144265685" class="font-700" style="color:#006565">(614) 426-5685</a>
           </p>
         </form>
       {/if}
