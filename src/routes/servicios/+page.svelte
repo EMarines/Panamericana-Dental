@@ -2,7 +2,7 @@
   const servicios = [
     {
       titulo: "Endodoncia",
-      img: "src/lib/assets/endodoncia.jpg",
+      img: "/assets/endodoncia.jpg",
       desc: "Tratamiento especializado para conservar dientes sanos, aliviar el dolor y evitar la pérdida del órgano dental.",
       puntos: [
         "Tratamiento de conductos",
@@ -13,7 +13,7 @@
     },
     {
       titulo: "Odontología integral estética",
-      img: "src/lib/assets/odontologia-estetica.jpg",
+      img: "/assets/odontologia-estetica.jpg",
       desc: "Combinamos estética y funcionalidad para lograr una sonrisa natural, armoniosa y saludable.",
       puntos: [
         "Diseño de sonrisa",
@@ -24,7 +24,7 @@
     },
     {
       titulo: "Blanqueamientos",
-      img: "src/lib/assets/blanqueamientos.jpg",
+      img: "/assets/blanqueamientos.jpg",
       desc: "Clarificación profesional para un tono más luminoso, uniforme y brillante en tu sonrisa.",
       puntos: [
         "Blanqueamiento profesional en consultorio",
@@ -35,7 +35,7 @@
     },
     {
       titulo: "Desmanchado de dientes",
-      img: "src/lib/assets/desmanchado.jpg",
+      img: "/assets/desmanchado.jpg",
       desc: "Eliminamos manchas por hábitos, alimentos o tabaco para recuperar el brillo natural de tus dientes.",
       puntos: [
         "Eliminación de manchas visibles",
@@ -46,7 +46,7 @@
     },
     {
       titulo: "Extracciones",
-      img: "src/lib/assets/extracciones.jpg",
+      img: "/assets/extracciones.jpg",
       desc: "Procedimientos seguros y cuidadosos para eliminar dientes dañados, impactados o que ya no cumplen su función.",
       puntos: [
         "Extracciones simples y complejas",
@@ -57,7 +57,7 @@
     },
     {
       titulo: "Rellenos dentales estéticos",
-      img: "src/lib/assets/rellenos-dentales.jpg",
+      img: "/assets/rellenos-dentales.jpg",
       desc: "Restauraciones discretas y naturales para recuperar forma, función y confianza en tu sonrisa.",
       puntos: [
         "Restauraciones de composite",
@@ -68,7 +68,7 @@
     },
     {
       titulo: "Puentes fijos y removibles",
-      img: "src/lib/assets/puentes-fijos-y-removibles.jpg",
+      img: "/assets/puentes-fijos-y-removibles.jpg",
       desc: "Soluciones de rehabilitación para recuperar espacios edéntulos y volver a masticar con comodidad.",
       puntos: [
         "Reconstrucción de espacios edéntulos",
@@ -79,7 +79,7 @@
     },
     {
       titulo: "Carillas dentales",
-      img: "src/lib/assets/carillas-dentales.jpg",
+      img: "/assets/carillas-dentales.jpg",
       desc: "Revestimientos finos que corrigen forma, color y alineación con resultados naturales y sofisticados.",
       puntos: [
         "Carillas de porcelana",

@@ -1,46 +1,46 @@
 <script>
   import { onMount } from "svelte";
-  import heroImage from "$lib/assets/chair.jpg";
-  import edificioImage from "$lib/assets/edificio.png";
+  const heroImage = "/assets/chair.jpg";
+  const edificioImage = "/assets/edificio.png";
 
   const servicios = [
     {
-      img: "src/lib/assets/endodoncia.jpg",
+      img: "/assets/endodoncia.jpg",
       titulo: "Endodoncia",
       desc: "Tratamiento de conductos para conservar dientes sanos, funcionales y sin dolor.",
     },
     {
-      img: "src/lib/assets/odontologia-estetica.jpg",
+      img: "/assets/odontologia-estetica.jpg",
       titulo: "Odontología integral estética",
       desc: "Diseño de sonrisa y restauraciones estéticas que devuelven naturalidad y confianza.",
     },
     {
-      img: "src/lib/assets/blanqueamientos.jpg",
+      img: "/assets/blanqueamientos.jpg",
       titulo: "Blanqueamientos",
       desc: "Clarificación profesional para un tono más luminoso y uniforme en tu sonrisa.",
     },
     {
-      img: "src/lib/assets/desmanchado.jpg",
+      img: "/assets/desmanchado.jpg",
       titulo: "Desmanchado de dientes",
       desc: "Eliminamos manchas y pigmentaciones para recuperar el brillo natural de tus dientes.",
     },
     {
-      img: "src/lib/assets/extracciones.jpg",
+      img: "/assets/extracciones.jpg",
       titulo: "Extracciones",
       desc: "Procedimientos seguros y cuidadosos para eliminar dientes dañados o impactados.",
     },
     {
-      img: "src/lib/assets/rellenos-dentales.jpg",
+      img: "/assets/rellenos-dentales.jpg",
       titulo: "Rellenos dentales estéticos",
       desc: "Restauraciones discretas y naturales para recuperar forma y función.",
     },
     {
-      img: "src/lib/assets/Puentes-fijos-y-removibles.jpg",
+      img: "/assets/puentes-fijos-y-removibles.jpg",
       titulo: "Puentes fijos y removibles",
       desc: "Soluciones de rehabilitación para recuperar la sonrisa y la masticación.",
     },
     {
-      img: "src/lib/assets/carillas-dentales.jpg",
+      img: "/assets/carillas-dentales.jpg",
       titulo: "Carillas dentales",
       desc: "Revestimientos finos que corrigen forma, color y alineación con resultados naturales.",
     },

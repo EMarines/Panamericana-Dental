@@ -1,23 +1,25 @@
 <script>
-  import '../app.css';
-  import { page } from '$app/stores';
-  import logo from '$lib/assets/logo.png';
+  import "../app.css";
+  import { page } from "$app/stores";
+  const logo = "/assets/logo.png";
 
   let { children } = $props();
   let menuOpen = $state(false);
   let scrolled = $state(false);
 
   const navLinks = [
-    { href: '/',          label: 'Inicio'    },
-    { href: '/servicios', label: 'Servicios' },
-    { href: '/doctores',  label: 'Doctores'  },
-    { href: '/contacto',  label: 'Contacto'  },
+    { href: "/", label: "Inicio" },
+    { href: "/servicios", label: "Servicios" },
+    { href: "/doctores", label: "Doctores" },
+    { href: "/contacto", label: "Contacto" },
   ];
 
   $effect(() => {
-    const onScroll = () => { scrolled = window.scrollY > 20; };
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    const onScroll = () => {
+      scrolled = window.scrollY > 20;
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   });
 </script>
 
@@ -26,15 +28,38 @@
   class="fixed top-0 inset-x-0 z-50 transition-all duration-300"
   class:glass={scrolled}
   class:shadow-lg={scrolled}
-  style="background: {scrolled ? 'rgba(255,255,255,0.95)' : 'rgba(248,249,255,0.95)'}; border-bottom: 1px solid {scrolled ? 'rgba(0,101,101,0.12)' : 'rgba(255,255,255,0.35)'};"
+  style="background: {scrolled
+    ? 'rgba(255,255,255,0.95)'
+    : 'rgba(248,249,255,0.95)'}; border-bottom: 1px solid {scrolled
+    ? 'rgba(0,101,101,0.12)'
+    : 'rgba(255,255,255,0.35)'};"
 >
-  <nav class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 flex items-center justify-between h-24">
+  <nav
+    class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 flex items-center justify-between h-24"
+  >
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-2 sm:gap-3 group transition-colors hover:opacity-90">
-      <img src={logo} alt="Logo Dental Panamericana" class="h-16 w-auto sm:h-20 md:h-24 object-contain" />
+    <a
+      href="/"
+      class="flex items-center gap-2 sm:gap-3 group transition-colors hover:opacity-90"
+    >
+      <img
+        src={logo}
+        alt="Logo Dental Panamericana"
+        class="h-16 w-auto sm:h-20 md:h-24 object-contain"
+      />
       <div class="leading-tight hidden sm:block">
-        <p class="font-display font-800 text-sm tracking-tight" style="color:#006565">DENTAL</p>
-        <p class="font-display font-600 text-xs tracking-widest uppercase" style="color:#3e4949">PANAMERICANA</p>
+        <p
+          class="font-display font-800 text-sm tracking-tight"
+          style="color:#006565"
+        >
+          DENTAL
+        </p>
+        <p
+          class="font-display font-600 text-xs tracking-widest uppercase"
+          style="color:#3e4949"
+        >
+          PANAMERICANA
+        </p>
       </div>
     </a>
 
@@ -44,12 +69,16 @@
         <a
           href={link.href}
           class="font-body text-sm font-600 tracking-wide transition-colors duration-200 relative group"
-          style="color: {$page.url.pathname === link.href ? '#006565' : '#3e4949'}"
+          style="color: {$page.url.pathname === link.href
+            ? '#006565'
+            : '#3e4949'}"
         >
           {link.label}
           <span
             class="absolute -bottom-1 left-0 h-0.5 rounded-full transition-all duration-300"
-            style="background:#006565; width:{$page.url.pathname === link.href ? '100%' : '0'}"
+            style="background:#006565; width:{$page.url.pathname === link.href
+              ? '100%'
+              : '0'}"
           ></span>
         </a>
       {/each}
@@ -62,21 +91,54 @@
         class="hidden md:inline-flex items-center gap-2 px-6 py-2.75 rounded-full font-display font-700 text-sm text-white shadow-md transition-all duration-200 hover:shadow-lg hover:scale-105"
         style="background: linear-gradient(135deg,#006565,#008080)"
       >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+          /></svg
+        >
         Agendar Cita
       </a>
 
       <!-- Hamburger -->
       <button
-        onclick={() => menuOpen = !menuOpen}
+        onclick={() => (menuOpen = !menuOpen)}
         class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl transition-colors"
         style="color:#006565"
         aria-label="Menú"
       >
         {#if menuOpen}
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            /></svg
+          >
         {:else}
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            /></svg
+          >
         {/if}
       </button>
     </div>
@@ -84,20 +146,26 @@
 
   <!-- Mobile menu -->
   {#if menuOpen}
-    <div class="md:hidden glass border-t border-white/30 px-6 py-4 flex flex-col gap-3">
+    <div
+      class="md:hidden glass border-t border-white/30 px-6 py-4 flex flex-col gap-3"
+    >
       {#each navLinks as link}
         <a
           href={link.href}
-          onclick={() => menuOpen = false}
+          onclick={() => (menuOpen = false)}
           class="py-2 px-3 rounded-xl font-600 text-sm transition-colors"
-          style="color: {$page.url.pathname === link.href ? '#006565' : '#3e4949'}; background: {$page.url.pathname === link.href ? 'rgba(0,101,101,0.08)' : 'transparent'}"
+          style="color: {$page.url.pathname === link.href
+            ? '#006565'
+            : '#3e4949'}; background: {$page.url.pathname === link.href
+            ? 'rgba(0,101,101,0.08)'
+            : 'transparent'}"
         >
           {link.label}
         </a>
       {/each}
       <a
         href="/contacto"
-        onclick={() => menuOpen = false}
+        onclick={() => (menuOpen = false)}
         class="mt-2 text-center py-3 rounded-full font-700 text-sm text-white"
         style="background: linear-gradient(135deg,#006565,#008080)"
       >
@@ -118,41 +186,74 @@
     <!-- Brand -->
     <div>
       <div class="flex items-center gap-3 mb-4">
-        <img src={logo} alt="Logo Dental Panamericana" class="h-10 w-auto object-contain" />
+        <img
+          src={logo}
+          alt="Logo Dental Panamericana"
+          class="h-10 w-auto object-contain"
+        />
         <div>
-          <p class="font-display font-800 text-sm" style="color:#76d6d5">DENTAL PANAMERICANA</p>
+          <p class="font-display font-800 text-sm" style="color:#76d6d5">
+            DENTAL PANAMERICANA
+          </p>
         </div>
       </div>
       <p class="text-sm leading-relaxed opacity-70 max-w-xs">
-        La gente, la tecnología y la ubicación que hacen que cada visita al dentista sea fácil.
+        La gente, la tecnología y la ubicación que hacen que cada visita al
+        dentista sea fácil.
       </p>
     </div>
 
     <!-- Links -->
     <div>
-      <p class="font-display font-700 text-sm mb-4 uppercase tracking-widest" style="color:#76d6d5">Navegación</p>
+      <p
+        class="font-display font-700 text-sm mb-4 uppercase tracking-widest"
+        style="color:#76d6d5"
+      >
+        Navegación
+      </p>
       <ul class="space-y-2 text-sm opacity-75">
         {#each navLinks as link}
-          <li><a href={link.href} class="hover:opacity-100 transition-opacity">{link.label}</a></li>
+          <li>
+            <a href={link.href} class="hover:opacity-100 transition-opacity"
+              >{link.label}</a
+            >
+          </li>
         {/each}
       </ul>
     </div>
 
     <!-- Contact -->
     <div>
-      <p class="font-display font-700 text-sm mb-4 uppercase tracking-widest" style="color:#76d6d5">Contacto</p>
+      <p
+        class="font-display font-700 text-sm mb-4 uppercase tracking-widest"
+        style="color:#76d6d5"
+      >
+        Contacto
+      </p>
       <address class="not-italic text-sm opacity-75 space-y-2">
         <p>Ave. Francisco Villa #5700</p>
         <p>Col. Panamericana, C.P. 31203</p>
         <p>Chihuahua, Chih. México</p>
-        <p class="pt-1"><a href="tel:+526144265685" class="hover:opacity-100">(614) 426-5685</a></p>
-        <p><a href="mailto:info@armviewdentistry.mx" class="hover:opacity-100">info@armviewdentistry.mx</a></p>
+        <p class="pt-1">
+          <a href="tel:+526144265685" class="hover:opacity-100"
+            >(614) 426-5685 y (614) 463-6699</a
+          >
+        </p>
+        <p>
+          <a href="mailto:info@armviewdentistry.mx" class="hover:opacity-100"
+            >cdental.panamericana@gmail.com</a
+          >
+        </p>
       </address>
     </div>
   </div>
 
-  <div class="mt-10 border-t border-white/10 pt-6 max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs opacity-50">
-    <p>© {new Date().getFullYear()} Dental Panamericana. Todos los derechos reservados.</p>
+  <div
+    class="mt-10 border-t border-white/10 pt-6 max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs opacity-50"
+  >
+    <p>
+      © {new Date().getFullYear()} Dental Panamericana. Todos los derechos reservados.
+    </p>
     <p>Chihuahua, Chih. México</p>
   </div>
 </footer>

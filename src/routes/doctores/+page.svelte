@@ -3,7 +3,7 @@
     {
       nombre: "Dra. Lucina Elena Yrigoyen Soto",
       titulo: "Cirujana Dentista · Titular",
-      img: "src/lib/assets/lucina.jpg",
+      img: "/assets/Lucina.jpg",
       bio: "La Dra. Lucina Elena Yrigoyen Soto es una profesional comprometida con la salud bucal integral, con un enfoque atento y humano en cada tratamiento. Su prioridad es brindar una atención cercana, segura y de calidad para que cada paciente se sienta acompañado en todo momento.",
       especialidades: [
         "Endodoncia",
@@ -15,7 +15,7 @@
     {
       nombre: "Dra. Lizety Karime Irigoyen Majalca",
       titulo: "Cirujana Dentista · Especialista en Atención Dental",
-      img: "src/lib/assets/Karime.JPG",
+      img: "/assets/Karime.JPG",
       bio: "La Dra. Lizety Karime Irigoyen Majalca ofrece una atención personalizada, cálida y profesional, enfocada en resolver las necesidades de cada paciente con precisión y empatía. Su compromiso está en brindar experiencias dentales cómodas, confiables y orientadas al bienestar.",
       especialidades: [
         "Extracciones",
