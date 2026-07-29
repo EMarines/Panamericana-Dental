@@ -13,20 +13,46 @@
   let email = $state("");
   let tel = $state("");
   let fecha = $state("");
+  let hora = $state("");
   let msg = $state("");
+  let cargando = $state(false);
   let enviado = $state(false);
   let error = $state(false);
+  let errorMsg = $state("");
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!nombre || !email || !tel) {
       error = true;
+      errorMsg = "Por favor completa los campos obligatorios (*).";
       return;
     }
     error = false;
-    enviado = true;
-    nombre = email = tel = fecha = msg = "";
-    setTimeout(() => (enviado = false), 5000);
+    cargando = true;
+
+    try {
+      const res = await fetch("/api/contacto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, email, tel, fecha, hora, msg })
+      });
+
+      const resData = await res.json();
+
+      if (res.ok && resData.success) {
+        enviado = true;
+        nombre = email = tel = fecha = hora = msg = "";
+      } else {
+        error = true;
+        errorMsg = resData.message || "Hubo un problema al enviar la solicitud. Por favor intenta de nuevo.";
+      }
+    } catch (err) {
+      console.error(err);
+      error = true;
+      errorMsg = "Error de conexión. Por favor intenta de nuevo o llámanos directamente al (614) 426-5685.";
+    } finally {
+      cargando = false;
+    }
   }
 
   function handleFocus(event) {
@@ -164,7 +190,7 @@
           (614) 426-5685 y (614) 463-6699
         </a>
         <a
-          href="mailto:info@armviewdentistry.mx"
+          href="mailto:cdental.panamericana@gmail.com"
           class="block text-sm"
           style="color:#3e4949"
         >
@@ -244,19 +270,27 @@
         Solicitar una Cita
       </h2>
       <p class="text-sm mb-6" style="color:#3e4949">
-        Llena el formulario y te contactaremos a la brevedad posible.
+        Llena el formulario y te confirmaremos a la brevedad posible.
       </p>
 
       {#if enviado}
         <div
-          class="rounded-2xl p-5 text-center"
+          class="rounded-2xl p-6 text-center"
           style="background:rgba(0,101,101,0.08)"
         >
-          <p class="text-2xl mb-2">✅</p>
-          <p class="font-700" style="color:#006565">¡Solicitud enviada!</p>
-          <p class="text-sm mt-1 opacity-70" style="color:#3e4949">
-            Te contactaremos muy pronto. Gracias.
+          <p class="text-3xl mb-2">✅</p>
+          <p class="font-700 text-lg mb-1" style="color:#006565">¡Solicitud enviada!</p>
+          <p class="text-sm opacity-80 mb-4" style="color:#3e4949">
+            Hemos recibido los datos de tu cita. Te confirmaremos a la brevedad posible a tu correo o teléfono.
           </p>
+          <button
+            type="button"
+            onclick={() => (enviado = false)}
+            class="px-5 py-2 rounded-full text-xs font-700 transition-all hover:bg-[#006565] hover:text-white"
+            style="border: 1.5px solid #006565; color:#006565"
+          >
+            Enviar otra solicitud
+          </button>
         </div>
       {:else}
         <form onsubmit={handleSubmit} class="space-y-4" novalidate>
@@ -265,7 +299,7 @@
               class="text-sm rounded-xl px-4 py-2"
               style="background:rgba(186,26,26,0.08); color:#ba1a1a"
             >
-              Por favor completa los campos obligatorios.
+              {errorMsg}
             </p>
           {/if}
 
@@ -333,23 +367,43 @@
             </div>
           </div>
 
-          <div>
-            <label
-              class="block text-xs font-700 mb-1.5 tracking-wide"
-              style="color:#3e4949"
-              for="fecha"
-            >
-              Fecha preferida de cita
-            </label>
-            <input
-              id="fecha"
-              type="date"
-              bind:value={fecha}
-              class="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
-              style="border: 1.5px solid rgba(0,101,101,0.2); background:#f8f9ff; color:#0b1c30"
-              onfocus={handleFocus}
-              onblur={handleBlur}
-            />
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label
+                class="block text-xs font-700 mb-1.5 tracking-wide"
+                style="color:#3e4949"
+                for="fecha"
+              >
+                Fecha preferida de cita
+              </label>
+              <input
+                id="fecha"
+                type="date"
+                bind:value={fecha}
+                class="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+                style="border: 1.5px solid rgba(0,101,101,0.2); background:#f8f9ff; color:#0b1c30"
+                onfocus={handleFocus}
+                onblur={handleBlur}
+              />
+            </div>
+            <div>
+              <label
+                class="block text-xs font-700 mb-1.5 tracking-wide"
+                style="color:#3e4949"
+                for="hora"
+              >
+                Hora preferida de cita
+              </label>
+              <input
+                id="hora"
+                type="time"
+                bind:value={hora}
+                class="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+                style="border: 1.5px solid rgba(0,101,101,0.2); background:#f8f9ff; color:#0b1c30"
+                onfocus={handleFocus}
+                onblur={handleBlur}
+              />
+            </div>
           </div>
 
           <div>
@@ -374,10 +428,19 @@
 
           <button
             type="submit"
-            class="w-full py-4 rounded-full font-display font-700 text-sm text-white shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all"
+            disabled={cargando}
+            class="w-full py-4 rounded-full font-display font-700 text-sm text-white shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
             style="background: linear-gradient(135deg,#006565,#008080)"
           >
-            Enviar Solicitud de Cita
+            {#if cargando}
+              <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span>Enviando...</span>
+            {:else}
+              <span>Enviar Solicitud de Cita</span>
+            {/if}
           </button>
 
           <p class="text-xs text-center opacity-60" style="color:#3e4949">
