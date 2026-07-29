@@ -220,6 +220,7 @@
           </li>
         {/each}
       </ul>
+    <a href="/privacy" class="text-sm hover:opacity-100 transition-opacity">Política de privacidad</a>
     </div>
 
     <!-- Contact -->
