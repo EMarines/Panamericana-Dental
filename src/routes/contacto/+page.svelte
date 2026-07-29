@@ -31,25 +31,49 @@
     cargando = true;
 
     try {
-      const res = await fetch("/api/contacto", {
+      // Envío directo a FormSubmit desde el navegador (funciona perfecto en Vercel estático y dinámico)
+      const res = await fetch("https://formsubmit.co/ajax/matchhomebr@gmail.com", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombre, email, tel, fecha, hora, msg })
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          _subject: `Nueva Solicitud de Cita - ${nombre}`,
+          _replyto: email,
+          email: email,
+          _template: "table",
+          _captcha: "false",
+          _language: "es",
+          "Nombre completo": nombre,
+          "Correo electrónico": email,
+          "Teléfono": tel,
+          "Fecha preferida de cita": fecha || "No especificada",
+          "Hora preferida de cita": hora || "No especificada",
+          "Mensaje / Consulta": msg || "Sin mensaje adicional"
+        })
       });
 
-      const resData = await res.json();
+      const contentType = res.headers.get("content-type") || "";
+      let resData = {};
+      if (contentType.includes("application/json")) {
+        resData = await res.json();
+      }
 
-      if (res.ok && resData.success) {
+      if (res.ok && (resData.success === true || resData.success === "true" || resData.success === undefined)) {
         enviado = true;
         nombre = email = tel = fecha = hora = msg = "";
+      } else if (resData.message && resData.message.includes("Activation")) {
+        error = true;
+        errorMsg = "Formulario en proceso de activación. Revisa el correo matchhomebr@gmail.com para confirmarlo.";
       } else {
         error = true;
-        errorMsg = resData.message || "Hubo un problema al enviar la solicitud. Por favor intenta de nuevo.";
+        errorMsg = resData.message || "Hubo un problema al enviar la solicitud. Intenta de nuevo.";
       }
     } catch (err) {
       console.error(err);
       error = true;
-      errorMsg = "Error de conexión. Por favor intenta de nuevo o llámanos directamente al (614) 426-5685.";
+      errorMsg = "Error de conexión. Intenta de nuevo o llámanos directamente al (614) 426-5685.";
     } finally {
       cargando = false;
     }
