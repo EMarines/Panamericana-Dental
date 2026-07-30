@@ -12,7 +12,7 @@ export async function POST({ request }) {
     const referer = request.headers.get('referer') || 'http://localhost:5173';
     const origin = request.headers.get('origin') || 'http://localhost:5173';
 
-    const response = await fetch('https://formsubmit.co/ajax/matchhomebr@gmail.com', {
+    const response = await fetch('https://formsubmit.co/ajax/cdental.panamericana@gmail.com', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ export async function POST({ request }) {
         return json({
           success: false,
           needsActivation: true,
-          message: 'Se ha enviado un correo de activación a matchhomebr@gmail.com. Por favor haz clic en "Activate Form" en tu bandeja de entrada o carpeta de SPAM.'
+          message: 'Se ha enviado un correo de activación a cdental.panamericana@gmail.com. Por favor haz clic en "Activate Form" en tu bandeja de entrada o carpeta de SPAM.'
         }, { status: 400 });
       }
       return json({ success: false, message: resJson.message || 'Error en el envío' }, { status: 400 });

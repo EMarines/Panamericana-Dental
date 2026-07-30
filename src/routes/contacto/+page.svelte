@@ -32,27 +32,30 @@
 
     try {
       // Envío directo a FormSubmit desde el navegador (funciona perfecto en Vercel estático y dinámico)
-      const res = await fetch("https://formsubmit.co/ajax/matchhomebr@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
+      const res = await fetch(
+        "https://formsubmit.co/ajax/cdental.panamericana@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            _subject: `Nueva Solicitud de Cita - ${nombre}`,
+            _replyto: email,
+            email: email,
+            _template: "table",
+            _captcha: "false",
+            _language: "es",
+            "Nombre completo": nombre,
+            "Correo electrónico": email,
+            Teléfono: tel,
+            "Fecha preferida de cita": fecha || "No especificada",
+            "Hora preferida de cita": hora || "No especificada",
+            "Mensaje / Consulta": msg || "Sin mensaje adicional",
+          }),
         },
-        body: JSON.stringify({
-          _subject: `Nueva Solicitud de Cita - ${nombre}`,
-          _replyto: email,
-          email: email,
-          _template: "table",
-          _captcha: "false",
-          _language: "es",
-          "Nombre completo": nombre,
-          "Correo electrónico": email,
-          "Teléfono": tel,
-          "Fecha preferida de cita": fecha || "No especificada",
-          "Hora preferida de cita": hora || "No especificada",
-          "Mensaje / Consulta": msg || "Sin mensaje adicional"
-        })
-      });
+      );
 
       const contentType = res.headers.get("content-type") || "";
       let resData = {};
@@ -60,20 +63,29 @@
         resData = await res.json();
       }
 
-      if (res.ok && (resData.success === true || resData.success === "true" || resData.success === undefined)) {
+      if (
+        res.ok &&
+        (resData.success === true ||
+          resData.success === "true" ||
+          resData.success === undefined)
+      ) {
         enviado = true;
         nombre = email = tel = fecha = hora = msg = "";
       } else if (resData.message && resData.message.includes("Activation")) {
         error = true;
-        errorMsg = "Formulario en proceso de activación. Revisa el correo matchhomebr@gmail.com para confirmarlo.";
+        errorMsg =
+          "Formulario en proceso de activación. Revisa el correo cdental.panamericana@gmail.com para confirmarlo.";
       } else {
         error = true;
-        errorMsg = resData.message || "Hubo un problema al enviar la solicitud. Intenta de nuevo.";
+        errorMsg =
+          resData.message ||
+          "Hubo un problema al enviar la solicitud. Intenta de nuevo.";
       }
     } catch (err) {
       console.error(err);
       error = true;
-      errorMsg = "Error de conexión. Intenta de nuevo o llámanos directamente al (614) 426-5685.";
+      errorMsg =
+        "Error de conexión. Intenta de nuevo o llámanos directamente al (614) 426-5685.";
     } finally {
       cargando = false;
     }
@@ -303,9 +315,12 @@
           style="background:rgba(0,101,101,0.08)"
         >
           <p class="text-3xl mb-2">✅</p>
-          <p class="font-700 text-lg mb-1" style="color:#006565">¡Solicitud enviada!</p>
+          <p class="font-700 text-lg mb-1" style="color:#006565">
+            ¡Solicitud enviada!
+          </p>
           <p class="text-sm opacity-80 mb-4" style="color:#3e4949">
-            Hemos recibido los datos de tu cita. Te confirmaremos a la brevedad posible a tu correo o teléfono.
+            Hemos recibido los datos de tu cita. Te confirmaremos a la brevedad
+            posible a tu correo o teléfono.
           </p>
           <button
             type="button"
@@ -457,9 +472,25 @@
             style="background: linear-gradient(135deg,#006565,#008080)"
           >
             {#if cargando}
-              <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              <svg
+                class="animate-spin h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
               </svg>
               <span>Enviando...</span>
             {:else}

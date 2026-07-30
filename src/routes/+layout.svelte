@@ -220,7 +220,9 @@
           </li>
         {/each}
       </ul>
-    <a href="/privacy" class="text-sm hover:opacity-100 transition-opacity">Política de privacidad</a>
+      <a href="/privacy" class="text-sm hover:opacity-100 transition-opacity"
+        >Política de privacidad</a
+      >
     </div>
 
     <!-- Contact -->
@@ -241,8 +243,9 @@
           >
         </p>
         <p>
-          <a href="mailto:info@armviewdentistry.mx" class="hover:opacity-100"
-            >cdental.panamericana@gmail.com</a
+          <a
+            href="mailto:cdental.panamericana@gmail.com"
+            class="hover:opacity-100">cdental.panamericana@gmail.com</a
           >
         </p>
       </address>

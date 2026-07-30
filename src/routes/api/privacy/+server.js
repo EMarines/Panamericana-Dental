@@ -13,7 +13,7 @@ En Dental Panamericana, respetamos la privacidad de nuestros usuarios y protegem
 - Seguridad: implementamos medidas técnicas y organizativas para proteger tus datos.
 - Derechos: puedes solicitar acceso, rectificación o eliminación de tus datos contacting us.
 
-Para más detalles, contáctanos en info@dentalpanamericana.com.`;
+Para más detalles, contáctanos en cdental.panamericana@gmail.com.`;
   return new Response(JSON.stringify({ policy }), {
     headers: {
       "Content-Type": "application/json"
